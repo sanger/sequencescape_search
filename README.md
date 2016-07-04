@@ -1,6 +1,6 @@
 # SequencescapeSearch
 
-TODO: Write a gem description
+A simple alternative to the sequencescape-client-api gem, when only a few endpoints are required
 
 ## Installation
 
@@ -18,7 +18,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+- Create a SequencescapeSearch::Search per endpoint
+```ruby
+proxy = ENV.fetch('FARADAY_PROXY','')
+sequencescape_uri = ENV.fetch('SEQUENCESCAPE_URI','http://localhost:3000/api/1')
+sequencescape_headers = { 'ACCEPT'=>'application/json', 'x-sequencescape-client-id'=>'development', 'Content-Type'=>' application/json'}
+api_root = Faraday.new(sequencescape_uri, proxy: proxy, headers: sequencescape_headers )
+search = SequencescapeSearch.new(api_root,SequencescapeSearch.plate_barcode_search)
+```
+- Call #query on the created search to retrieve the results as a hash
+```ruby
+search.find('122345')
+```
 
 ## Contributing
 
