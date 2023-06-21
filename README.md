@@ -1,5 +1,7 @@
 # SequencescapeSearch
 
+Archiving this repo as it is not used anymore.
+
 A simple alternative to the sequencescape-client-api gem, when only a few endpoints are required
 
 ## Installation
